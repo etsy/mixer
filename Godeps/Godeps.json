@@ -1,0 +1,46 @@
+{
+	"ImportPath": "github.com/etsy/mixer",
+	"GoVersion": "go1.3.3",
+	"Packages": [
+		"./..."
+	],
+	"Deps": [
+		{
+			"ImportPath": "code.google.com/p/gcfg",
+			"Rev": "c2d3050044d05357eaf6c3547249ba57c5e235cb"
+		},
+		{
+			"ImportPath": "github.com/go-sql-driver/mysql",
+			"Comment": "v1.2-119-g527bcd5",
+			"Rev": "527bcd55aab2e53314f1a150922560174b493034"
+		},
+		{
+			"ImportPath": "github.com/gorilla/context",
+			"Rev": "14f550f51af52180c2eefed15e5fd18d63c0a64a"
+		},
+		{
+			"ImportPath": "github.com/gorilla/mux",
+			"Rev": "49c024275504f0341e5a9971eb7ba7fa3dc7af40"
+		},
+		{
+			"ImportPath": "github.com/etsy/mixer/config",
+			"Rev": "d57e0d49aa15f3613426232794204fac055dd6ec"
+		},
+		{
+			"ImportPath": "github.com/etsy/mixer/db",
+			"Rev": "d57e0d49aa15f3613426232794204fac055dd6ec"
+		},
+		{
+			"ImportPath": "github.com/etsy/mixer/debug",
+			"Rev": "d57e0d49aa15f3613426232794204fac055dd6ec"
+		},
+		{
+			"ImportPath": "github.com/etsy/mixer/mail",
+			"Rev": "d57e0d49aa15f3613426232794204fac055dd6ec"
+		},
+		{
+			"ImportPath": "gopkg.in/gcfg.v1",
+			"Rev": "0ef1a8547f99b94fac9af5377dd72febba18f37c"
+		}
+	]
+}

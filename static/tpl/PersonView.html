@@ -1,0 +1,49 @@
+<div class="row">
+
+    <form class="form-horizontal col-md-12">
+
+        <div class="col-md-2"></div>
+        <div class="col-md-5">
+            <fieldset>
+
+                <legend>My Mixer Settings</legend>
+                <br/>
+
+                <div class="shared_person_view"></div>
+
+            </fieldset>
+
+
+        <% if (!_.isNull(assistant_for) && !_.isEmpty(assistant_for)) { %>
+            <h5>You're an assistant for these people and can edit their settings:</h5>
+                <ul>
+                <% _.each(assistant_for, function(id, name){ %>
+                      <li><a href="/#people/<%= id %>"><%= name %></a></li>
+                <% }); %>
+                </ul>
+        <% } %>
+
+
+        </div>
+
+        <div class="col-md-1"></div>
+
+        <div class="col-md-3">
+            <a href="/redirect/staff/<%= username %>"><img class="img-circle" id="picture" width="180" src="<%= avatar %>"/></a>
+        </div>
+
+        <div class="col-md-1"></div>
+
+    </form>
+
+</div>
+
+<div class="row status-bar">
+    <div class="col-md-12">
+        <div class="alert alert-success" style="display: none">
+            <b>Success!</b> Saved successfully
+        </div>
+    </div>
+</div>
+
+

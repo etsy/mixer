@@ -1,0 +1,35 @@
+[server]
+# this is the port the mixer daemon runs on
+port=3001
+# the url of the mixer UI
+url="http://mixer.yourdomain.com"
+
+[userauth]
+# the authentication header passed in
+header="X-Username"
+
+[mail]
+# address the mixer email comes from
+email-address="mixerbot@yourdomain.com"
+# smtp host to send through
+smtp-host="smtp.gmail.com"
+# email host port
+port=587
+# email host domain
+domain="yourdomain.com"
+# this username is used for testing purposes
+admin-username="your_email_username"
+
+[database "mixer"]
+user=mixeruser
+hostname=localhost
+port=3306
+name=mixer
+
+[staff]
+# one or more urls of json feed to pull staff data from
+datafeed-url="https://datafeeds.yourdomain.com/staff"
+# link to the ui of your staff directory
+directory-url="http://staffdir.yourdomain.com/staff"
+# url of default avatar image
+default-avatar-url="https://yourdomain.com/noface.png"

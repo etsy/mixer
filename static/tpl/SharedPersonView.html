@@ -1,0 +1,36 @@
+
+<div class="form-group">
+    <label for="username" class="control-label">Email Username:</label>
+
+    <div class="controls">
+        <input class="form-control" id="username" name="username" type="text" value="<%= username === null ? '' : username %>"  disabled/>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="name" class="control-label">Name:</label>
+    <div class="help-block">Used in the mixer email and should be your first and last name.</div>
+
+    <div class="controls">
+        <input class="form-control" type="text" id="name" name="name" value="<%= name %>" <%= disabled === '1' ? 'disabled' : '' %>/>
+        <div class="help-inline"></div>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="assistant" class="control-label">Do you have an assistant? Add their username here:</label>
+    <div class="help-block">Optional: If you have an assistant that manages your calendar, add their LDAP username here. It should be of the form first letter of first name, followed by last name</div>
+
+    <div class="controls">
+        <input class="form-control" type="text" id="assistant" name="assistant" value="<%= assistant %>" <%= disabled === '1' ? 'disabled' : '' %>/>
+        <div class="help-inline"></div>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="mixers" class="control-label">Participating Mixers</label>
+    <div class="help-block">Select the peer groups for mixers you'd like to participate in.</div>
+    <br/>
+
+    <div class="controls" id="participating-mixers"></div>
+</div>

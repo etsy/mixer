@@ -1,0 +1,69 @@
+a.plain:link
+{ color: #333; text-decoration: none }
+a.plain:active
+{ color: #333; text-decoration: none }
+a.plain:visited
+{ color: #333; text-decoration: none }
+a.plain:hover
+{ color: #333; text-decoration: none }
+
+.status-bar {
+    height: 60px;
+}
+
+.about-icon {
+    float: left;
+    margin-right: 12px;
+}
+
+.thumbnails {
+    list-style-type: none;
+    display: inline-block;
+}
+
+.mixer-label {
+    width: 200px;
+    margin-top: 10px;
+    float: left;
+}
+
+.mixer-container {
+    margin-top: 10px;
+}
+
+.mixers {
+    float: right;
+    display: inline-block;
+}
+
+.form-actions {
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+.form-horizontal .form-group {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.plain {
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.navbar-inverse {
+    background-color: #428BCA;
+    border: 0;
+}
+
+.navbar .container .navbar-brand {
+    color: #fff;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #fff;
+}
+
+.add-menu li a {
+    color: #fff;
+}
