@@ -84,7 +84,7 @@ An example cron of running the import of staff data:
 
 ### Cleaning up Alumni
 
-Since it doesn't make sense to pair people with others that have left the company, some cleanup work is involved with the groups people have joined. There is a script to help here. The assumption is that you populate your staff table with both enabled and non-enabled users. The cleanup script will then remove any disabled users from the people_groups table so that they are no longer matched but still retain their account and history.
+Since it doesn't make sense to pair people with others that have left the company, some cleanup work is involved with the groups people have joined. There is a script to help here. The assumption is that you populate your staff table with both enabled and non-enabled users. The cleanup script will then remove any users that have the _enabled_ flag set to *_0_* from the people_groups table so that they are no longer matched but still retain their account and history.
 
 An example cron to run the cleanup script is:
 
