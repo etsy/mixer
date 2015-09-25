@@ -67,7 +67,7 @@ The local staff table is assumed to be populated and updated. There are some hel
 An example cron of running the import of staff data:
 
      # run script to sync staff data
-     * */4 * * * cd /usr/local/mixer && /usr/local/mixer/bin/staff >> /var/log/mixer/staffcron.log 2>&1
+     0 */4 * * * cd /usr/local/mixer && /usr/local/mixer/bin/staff >> /var/log/mixer/staffcron.log 2>&1
 
 #### JSON Format of Staff Datafeed
 
