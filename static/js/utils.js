@@ -57,6 +57,10 @@ window.utils = {
         }
     },
 
+    spacesToDashes: function(word) {
+        return word.replace(/\s/g, "-");
+    },
+
     addValidationError: function (field, message) {
         var controlGroup = $('#' + field).parent().parent();
         $('.help-inline', controlGroup).html(message);

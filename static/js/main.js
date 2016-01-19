@@ -11,7 +11,7 @@ var AppRouter = Backbone.Router.extend({
     initialize: function () {
         utils.mixer_types().done(function(types) {
             _.each(utils.mixers, function(type){
-                $("#nav-dropdown").append('<li class="'+ type +'-menu"><a href="#group/'+ type +'">'+ type +'</a></li>');
+                $("#nav-dropdown").append('<li class="'+ utils.spacesToDashes(type) +'-menu"><a href="#group/'+ type +'">'+ type +'</a></li>');
             });
         });
         this.headerView = new HeaderView();
@@ -42,7 +42,7 @@ var AppRouter = Backbone.Router.extend({
         personList.fetch({success: function(){
             $("#content").html(new PersonListView({model: personList, page: p}).el);
         }});
-        this.headerView.selectMenuItem(gn + '-menu');
+        this.headerView.selectMenuItem(utils.spacesToDashes(gn) + '-menu');
     },
 
     authenticate: function(person) {
