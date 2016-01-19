@@ -11,7 +11,7 @@ var AppRouter = Backbone.Router.extend({
     initialize: function () {
         utils.mixer_types().done(function(types) {
             _.each(utils.mixers, function(type){
-                $("#nav-header").append('<li class="'+ type +'-menu"><a href="#group/'+ type +'">'+ type +'</a></li>');
+                $("#nav-dropdown").append('<li class="'+ type +'-menu"><a href="#group/'+ type +'">'+ type +'</a></li>');
             });
         });
         this.headerView = new HeaderView();
