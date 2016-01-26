@@ -314,11 +314,12 @@ func InsertStaffData(s Staff) {
 	ConnectMixer()
 
 	stmt, err := MixerDb.Prepare(`insert into staff (auth_username, staff_id, first_name, last_name, title, is_manager, avatar, enabled)
-                                  values (?, ?, ?, ?, ?, ?, ?, ?) on duplicate key update enabled = ?`)
+                                  values (?, ?, ?, ?, ?, ?, ?, ?) on duplicate key update enabled = ?, title = ?, is_manager = ?, avatar = ?`)
 	if err != nil {
 		log.Println(err)
 	}
-	_, err = stmt.Exec(s.Auth_UserName, s.Id, s.FirstName, s.LastName, s.Title, s.IsManager, s.Avatar, s.Enabled, s.Enabled)
+	_, err = stmt.Exec(s.Auth_UserName, s.Id, s.FirstName, s.LastName, s.Title, s.IsManager, s.Avatar, s.Enabled,
+		s.Enabled, s.Title, s.IsManager, s.Avatar)
 	if err != nil {
 		log.Println(err)
 	}
