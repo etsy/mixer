@@ -43,8 +43,8 @@ window.Person = Backbone.Model.extend({
         id: null,
         name: "",
         assistant: "",
-        disabled: '0',
-        is_manager: '0',
+        disabled: false,
+        is_manager: false,
         mixers: {},
         assistant_for: {}
     }
