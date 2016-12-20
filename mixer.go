@@ -23,8 +23,8 @@ func main() {
 
 	router.NotFoundHandler = http.HandlerFunc(h.NotFoundHandler)
 
-	router.HandleFunc("/mixer", h.IndexHandler)
-	router.HandleFunc("/mixers", h.MixerHandler).Methods("GET")
+	router.HandleFunc("/mixer/{mixer}", h.MixerHandler).Methods("GET")
+	router.HandleFunc("/mixers", h.MixersHandler).Methods("GET")
 	router.HandleFunc("/group/{group}", h.AllPeopleHandler).Methods("GET")
 	router.HandleFunc("/people/{id:[0-9]+}", h.PersonHandler).Methods("GET")
 	router.HandleFunc("/people/{id:[0-9]+}", h.PersonPutHandler).Methods("PUT")

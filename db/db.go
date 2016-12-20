@@ -364,7 +364,7 @@ func GetPersonData(id int64) (Person, error) {
 	}
 
 	// get the mixer data //////////////////////////////
-	p, err = getMixerData(p)
+	p, err = getMixersForPerson(p)
 	if err != nil {
 		log.Println(err)
 		return p, err
@@ -418,7 +418,7 @@ func GetMixers() ([]Group, error) {
 	ConnectMixer()
 
 	groups := make([]Group, 0)
-	rows, err := MixerDb.Query("select id, name from groups")
+	rows, err := MixerDb.Query("select id, name, description from groups")
 	if err != nil {
 		return groups, err
 	}
@@ -427,7 +427,7 @@ func GetMixers() ([]Group, error) {
 	for rows.Next() {
 
 		g := Group{}
-		if err := rows.Scan(&g.Id, &g.Name); err != nil {
+		if err := rows.Scan(&g.Id, &g.Name, &g.Description); err != nil {
 			log.Println(err)
 		}
 
@@ -437,10 +437,19 @@ func GetMixers() ([]Group, error) {
 	return groups, nil
 }
 
-func getMixerData(p Person) (Person, error) {
+func GetMixerData(groupname string) (Group, error) {
 	ConnectMixer()
 
-	rows, err := MixerDb.Query("select id, name from groups")
+	g := Group{}
+	err := MixerDb.QueryRow("select id, name, description from groups where name = ?", groupname).Scan(&g.Id, &g.Name, &g.Description)
+
+	return g, err
+}
+
+func getMixersForPerson(p Person) (Person, error) {
+	ConnectMixer()
+
+	rows, err := MixerDb.Query("select id, name, description from groups")
 	if err != nil {
 		return p, err
 	}
@@ -449,7 +458,7 @@ func getMixerData(p Person) (Person, error) {
 	for rows.Next() {
 
 		g := Group{}
-		if err := rows.Scan(&g.Id, &g.Name); err != nil {
+		if err := rows.Scan(&g.Id, &g.Name, &g.Description); err != nil {
 			log.Println(err)
 		}
 
