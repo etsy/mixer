@@ -24,33 +24,53 @@ window.SharedPersonView = Backbone.View.extend({
 
         utils.mixer_types().done(function(types) {
             _.each(utils.mixers, function(type){
-                if (utils.isValidForUser(type, self.model.get('is_manager'))) {
+                if (utils.isValidForUser(type.name, self.model.get('is_manager'))) {
 
-                    $("<span/>", {
+                    var mixerContainer = $("<div/>", {
+                        class: "mixer-container",
+                    });
+
+                    var infoWrapper = $("<div/>", {
+                        class: "mixer-information",
+                    });
+
+                    var infoLabel = $("<span/>", {
                         class: "mixer-label",
-                        text: type
-                    })
-                    .appendTo("#participating-mixers");
+                        text: type.name
+                    });
 
-                    var input = $("<input/>", {
+                    var infoDescription = $("<span/>", {
+                        class: "mixer-description",
+                        text: type.description
+                    });
+
+                    var checkboxWrapper = $("<div/>", {
+                        class: "mixer-checkbox",
+                    });
+
+                    var checkboxInput = $("<input/>", {
                         type: "checkbox",
                         class: "mixers",
-                        name: type,
+                        name: type.name,
                         value: "1",
                         disabled: (self.model.get('disabled') === '1' ? true : false)
                     });
-                    input.prop('checked', self.model.get('mixers')[type]);
+                    checkboxInput.prop('checked', self.model.get('mixers')[type.name]);
 
-                    $("<div/>", {
-                        class: "mixer-container",
-                    })
-                    .append(input)
-                    .append($("<br/>"))
+                    infoWrapper
+                    .append(infoLabel)
+                    .append(infoDescription);
+
+                    checkboxWrapper.append(checkboxInput);
+
+                    mixerContainer
+                    .append(infoWrapper)
+                    .append(checkboxWrapper)
                     .appendTo("#participating-mixers");
 
-                    input.bootstrapSwitch('onText', 'YES');
-                    input.bootstrapSwitch('offText', 'NO');
-                    input.on("switchChange.bootstrapSwitch", $.proxy(self.handleMixerChange, self));
+                    checkboxInput.bootstrapSwitch('onText', 'YES');
+                    checkboxInput.bootstrapSwitch('offText', 'NO');
+                    checkboxInput.on("switchChange.bootstrapSwitch", $.proxy(self.handleMixerChange, self));
                 }
             });
         });

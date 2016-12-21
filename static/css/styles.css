@@ -21,19 +21,47 @@ a.plain:hover
     display: inline-block;
 }
 
+.mixer-heading {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
 .mixer-label {
-    width: 200px;
-    margin-top: 10px;
+    width: 500px;
+    font-weight: bold;
     float: left;
+}
+
+.mixer-description {
+    width: 500px;
+    float: left;
+}
+
+.participating-mixers {
+    display: flex;
 }
 
 .mixer-container {
     margin-top: 10px;
+    flex: 1 100%;
+    display: flex;
 }
 
-.mixers {
-    float: right;
-    display: inline-block;
+.mixer-information, .mixer-checkbox {
+    flex: 1 100%;
+}
+
+.mixer-information {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.mixer-checkbox {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
 }
 
 .form-actions {

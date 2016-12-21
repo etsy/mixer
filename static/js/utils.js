@@ -15,12 +15,31 @@ window.utils = {
             contentType: false
         });
         p.done(function (mixer_data) {
-            self.mixers = _.pluck(mixer_data, 'name');
+            self.mixers = _.map(mixer_data, function(mixer) {
+                return { name: mixer.name, description: mixer.description };
+            });
         })
         p.fail(function () {
             self.showAlert('Error!', 'An error occurred while fetching mixers');
         });
         return p;
+    },
+
+    mixer_data : function(mixer) {
+        var self = this;
+        var m = $.ajax({
+            url: 'mixer/' + mixer,
+            dataType: "json",
+            type: 'GET',
+            processData: false,
+            cache: true,
+            async: true,
+            contentType: false
+        });
+        m.fail(function() {
+            self.showAlert('Error!', 'An error occurred while fetching data for ' + mixer);
+        });
+        return m;
     },
 
     isValidForUser: function(type, is_manager) {
@@ -88,8 +107,8 @@ window.utils = {
             mixer_map = {};
         }
         $.each(this.mixer_types(), function( index, type ) {
-            if (typeof mixer_map[type] == "undefined") {
-                mixer_map[type] = model.get(type);
+            if (typeof mixer_map[type.name] == "undefined") {
+                mixer_map[type.name] = model.get(type.name);
             }
         });
         return mixer_map;

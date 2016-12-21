@@ -124,6 +124,14 @@ func (h *Handlers) StaffRedirectHandler(w http.ResponseWriter, r *http.Request) 
 }
 
 func (h *Handlers) MixerHandler(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	mixername := vars["mixer"]
+	m, _ := GetMixerData(mixername)
+	myjson, _ := json.Marshal(m)
+	w.Write([]byte(myjson))
+}
+
+func (h *Handlers) MixersHandler(w http.ResponseWriter, r *http.Request) {
 	g, _ := GetMixers()
 	myjson, _ := json.Marshal(g)
 	w.Write([]byte(myjson))
